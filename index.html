@@ -7,38 +7,47 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
       color: #f8f8f8;
       margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
+
     .container {
       background: #202020;
-      max-width: 600px;
-      width: 100%;
-      margin: auto;
+      width: 90%;
+      max-width: 500px;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 20px #00ffd0;
     }
+
     h1 {
       text-align: center;
       color: #00ffd0;
       margin-bottom: 20px;
       text-shadow: 0 0 5px #00ffd0;
-      font-size: 1.5em;
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
     }
+
     label {
       font-weight: bold;
       display: block;
       margin-top: 10px;
-      color: #f8f8f8;
       font-size: 0.9em;
     }
-    input, select {
+
+    input {
       width: 100%;
       margin-top: 5px;
       margin-bottom: 15px;
@@ -48,23 +57,24 @@
       background: #333;
       color: #fff;
       font-size: 1em;
-      box-sizing: border-box;
     }
+
     button {
       background: #00ffd0;
       color: #000;
       border: none;
-      padding: 12px 20px;
+      padding: 12px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 1em;
       width: 100%;
       font-weight: bold;
-      box-sizing: border-box;
     }
+
     button:hover {
       background: #00cfa2;
     }
+
     .output {
       margin-top: 20px;
       padding: 15px;
@@ -73,8 +83,8 @@
       color: #0f0;
       font-family: monospace;
       white-space: pre-wrap;
-      word-break: break-word;
     }
+
     a#whatsLink {
       display: inline-block;
       margin-top: 15px;
@@ -86,20 +96,9 @@
       font-weight: bold;
       font-size: 1em;
     }
+
     a#whatsLink:hover {
       background: #1ebe5d;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      .container {
-        padding: 15px;
-      }
-      h1 {
-        font-size: 1.3em;
-      }
     }
   </style>
 </head>
