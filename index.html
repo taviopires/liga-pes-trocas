@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troca de Jogadores - Liga PES 2007</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .container {
+      background: #202020;
+      max-width: 600px;
+      width: 100%;
+      margin: auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffd0;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffd0;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #00ffd0;
+      font-size: 1.5em;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      color: #f8f8f8;
+      font-size: 0.9em;
+    }
+    input, select {
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #333;
+      color: #fff;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    button {
+      background: #00ffd0;
+      color: #000;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      width: 100%;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+    button:hover {
+      background: #00cfa2;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #333;
+      border-radius: 8px;
+      color: #0f0;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    a#whatsLink {
+      display: inline-block;
+      margin-top: 15px;
+      background: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    a#whatsLink:hover {
+      background: #1ebe5d;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔄 Troca de Jogadores - Liga PES 2007</h1>
+
+    <label>Participante 1:</label>
+    <input type="text" id="p1" placeholder="Ex: Otávio">
+
+    <label>Jogador recebido pelo P1:</label>
+    <input type="text" id="recebeP1" placeholder="Ex: Roberto Carlos">
+
+    <label>Participante 2:</label>
+    <input type="text" id="p2" placeholder="Ex: Lucas">
+
+    <label>Jogador recebido pelo P2:</label>
+    <input type="text" id="recebeP2" placeholder="Ex: Cafu">
+
+    <button onclick="gerarMensagem()">🎮 Gerar Mensagem</button>
+
+    <div class="output" id="mensagemBox" style="display:none">
+      <h3>Mensagem para WhatsApp:</h3>
+      <p id="mensagemTexto"></p>
+      <a id="whatsLink" href="#" target="_blank">📲 Enviar no WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    function gerarMensagem() {
+      const p1 = document.getElementById('p1').value;
+      const recebeP1 = document.getElementById('recebeP1').value;
+      const p2 = document.getElementById('p2').value;
+      const recebeP2 = document.getElementById('recebeP2').value;
+      const data = new Date().toLocaleDateString('pt-BR');
+
+      const mensagem = `🔁 TROCA NA LIGA PES 2006 🔁\n\n🎮 ${p1} recebeu:\n- ${recebeP1}\n\n🎮 ${p2} recebeu:\n- ${recebeP2}\n\n📆 Atualizado em ${data}.`;
+
+      document.getElementById('mensagemTexto').innerText = mensagem;
+      document.getElementById('whatsLink').href = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+      document.getElementById('mensagemBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
