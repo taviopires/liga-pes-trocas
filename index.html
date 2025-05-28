@@ -117,14 +117,18 @@
     <label>Participante 1:</label>
     <input type="text" id="p1" placeholder="Ex: Otávio">
 
-    <label>Jogador recebido pelo P1:</label>
-    <input type="text" id="recebeP1" placeholder="Ex: Roberto Carlos">
+    <label>Jogadores recebidos pelo P1 (máx. 3):</label>
+    <input type="text" id="recebeP1_1" placeholder="Ex: Roberto Carlos">
+    <input type="text" id="recebeP1_2" placeholder="(opcional)">
+    <input type="text" id="recebeP1_3" placeholder="(opcional)">
 
     <label>Participante 2:</label>
     <input type="text" id="p2" placeholder="Ex: Lucas">
 
-    <label>Jogador recebido pelo P2:</label>
-    <input type="text" id="recebeP2" placeholder="Ex: Cafu">
+    <label>Jogadores recebidos pelo P2 (máx. 3):</label>
+    <input type="text" id="recebeP2_1" placeholder="Ex: Cafu">
+    <input type="text" id="recebeP2_2" placeholder="(opcional)">
+    <input type="text" id="recebeP2_3" placeholder="(opcional)">
 
     <button onclick="gerarMensagem()">🎮 Gerar Mensagem</button>
 
@@ -138,12 +142,23 @@
   <script>
     function gerarMensagem() {
       const p1 = document.getElementById('p1').value;
-      const recebeP1 = document.getElementById('recebeP1').value;
       const p2 = document.getElementById('p2').value;
-      const recebeP2 = document.getElementById('recebeP2').value;
+
+      const recebeP1 = [
+        document.getElementById('recebeP1_1').value,
+        document.getElementById('recebeP1_2').value,
+        document.getElementById('recebeP1_3').value
+      ].filter(j => j.trim() !== '').map(j => `- ${j}`).join('\n');
+
+      const recebeP2 = [
+        document.getElementById('recebeP2_1').value,
+        document.getElementById('recebeP2_2').value,
+        document.getElementById('recebeP2_3').value
+      ].filter(j => j.trim() !== '').map(j => `- ${j}`).join('\n');
+
       const data = new Date().toLocaleDateString('pt-BR');
 
-      const mensagem = `🔁 TROCA NA LIGA PES 2006 🔁\n\n🎮 ${p1} recebeu:\n- ${recebeP1}\n\n🎮 ${p2} recebeu:\n- ${recebeP2}\n\n📆 Atualizado em ${data}.`;
+      const mensagem = `🔁 TROCA NA LIGA PES 2006 🔁\n\n🎮 ${p1} recebeu:\n${recebeP1}\n\n🎮 ${p2} recebeu:\n${recebeP2}\n\n📆 Atualizado em ${data}.`;
 
       document.getElementById('mensagemTexto').innerText = mensagem;
       document.getElementById('whatsLink').href = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
